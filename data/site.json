@@ -1,0 +1,10 @@
+{
+ "joinUrl": "",
+ "contactUrl": "",
+ "rulebookUrl": "",
+ "email": "info@example.com",
+ "_note": "joinUrl=加入申請フォーム(Googleフォーム等)のURL / rulebookUrl=RULE BOOKのURL / email=問い合わせ受付先。空欄の場合は案内文を表示します / logo=ロゴ画像 / keyVisual=HOMEのキービジュアル / favicon=アイコン(例 images/favicon.png)",
+ "logo": "images/logo.png",
+ "favicon": "images/favicon.png",
+ "keyVisual": ""
+}
