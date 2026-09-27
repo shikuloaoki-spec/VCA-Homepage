@@ -1,0 +1,36 @@
+[
+ {
+  "id": "aoki-ciclo",
+  "name": "碧樹シクロ",
+  "role": "VCA President / VTuber / Video Editor / Programmer",
+  "genres": [
+   "VTuber",
+   "動画編集",
+   "プログラミング"
+  ],
+  "intro": "VCA会長兼、準備中VTuber・動画編集者・プログラマー。",
+  "image": "",
+  "about": "VCA会長。準備中のVTuberとして活動しつつ、動画編集とプログラミングでVCAの活動を支えています。",
+  "skills": [
+   "動画編集",
+   "Web制作",
+   "プログラミング"
+  ],
+  "canDo": [
+   "Webサイト・ツールの制作",
+   "動画編集の相談",
+   "企画の立ち上げ支援"
+  ],
+  "links": {
+   "X": "",
+   "YouTube": ""
+  },
+  "works": [
+   {
+    "title": "VCA公式サイト",
+    "url": ""
+   }
+  ],
+  "portrait": "images/aoki-ciclo.webp"
+ }
+]
