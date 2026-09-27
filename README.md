@@ -12,3 +12,8 @@ GitHub Pagesにそのままアップロードして動作します（Settings > 
 - 立ち絵: `members.json` の `portrait` → 例 `images/aoki-ciclo-full.png`（縦長3:4、上半身が見える構図が最適）
 - 顔アイコン: `image`（立ち絵が無い場合に円形表示）／サムネイル: news・projects の `thumbnail`
 - 画像は1枚500KB以下（webp/png）が目安
+
+## HOMEの右側で回る写真（オービット）
+- 既定では `members.json` に登録した全員の顔写真が自動で円状に回ります。追加の設定は不要です。
+- 表示する画像・動画を指定したい場合は `site.json` の `heroOrbit` に配列でパスを書きます（例: `["images/a.png","images/b.mp4"]`）。動画は自動再生・ループ・無音で流れます。
+- 中央の丸には `keyVisual` の画像／動画が表示されます（未設定ならロゴ文字）。

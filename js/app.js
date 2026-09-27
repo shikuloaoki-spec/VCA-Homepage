@@ -20,12 +20,32 @@ const cardProject = p => `<a class="card" ${p.url ? `href="${esc(p.url)}" target
 const rowNews = n => `<li><a ${n.url ? `href="${esc(n.url)}" target="_blank" rel="noopener"` : ""}><time>${esc(n.date)}</time><span><span class="tag">${esc(n.category)}</span></span><span><b>${esc(n.title)}</b><br><small style="color:var(--sub)">${esc(n.summary)}</small></span></a></li>`;
 const cardAct = a => `<div class="card"><span class="tag g">${esc(a.key)}</span><h3>${esc(a.label)}</h3><p>${esc(a.text)}</p></div>`;
 
+
+function mediaTag(item, cls) {
+  if (!item) return "";
+  const src = typeof item === "string" ? item : item.src;
+  const isVideo = /\.(mp4|webm|mov)$/i.test(src || "");
+  if (!src) return "";
+  return isVideo
+    ? `<video class="${cls}" src="${esc(src)}" autoplay muted loop playsinline></video>`
+    : `<img class="${cls}" src="${esc(src)}" alt="">`;
+}
+function orbit() {
+  const items = (D.site.heroOrbit && D.site.heroOrbit.length) ? D.site.heroOrbit
+    : D.members.map(m => m.portrait || m.image).filter(Boolean);
+  if (!items.length && !D.site.keyVisual) return "";
+  return `<div class="orbit-wrap">
+    <div class="orbit-center">${D.site.keyVisual ? mediaTag(D.site.keyVisual, "orbit-kv") : `<span class="orbit-logo">VCA</span>`}</div>
+    ${items.length ? `<div class="orbit-ring">${items.map((it, i) => `<div class="orbit-item" style="--i:${i};--n:${items.length}"><div class="orbit-item-in">${mediaTag(it, "orbit-media")}</div></div>`).join("")}</div>` : ""}
+  </div>`;
+}
+
 const views = {
 home: () => `
-<div class="hero ${D.site.keyVisual ? "has-kv" : ""}"><div class="in"><div class="en">Virtual Creators Association</div><h1>VCA</h1><div class="ja">バーチャルクリエイターズ協会</div>
+<div class="hero ${(D.members.length || D.site.keyVisual) ? "has-kv" : ""}"><div class="in"><div class="en">Virtual Creators Association</div><h1>VCA</h1><div class="ja">バーチャルクリエイターズ協会</div>
 <div class="copy">一人では届かない場所へ。</div>
 <p class="d">個人で活動するVTuber・バーチャルクリエイター・創作活動者をつなぎ、コラボレーション、企画、技術共有、共同制作を生み出す団体です。</p>
-<div class="btns"><a class="btn pri" href="#/about">ABOUT VCA</a><a class="btn" href="#/join">JOIN VCA</a></div>${D.site.keyVisual ? `<div class="kv"><img src="${esc(D.site.keyVisual)}" alt="VCA キービジュアル"></div>` : ""}</div></div>
+<div class="btns"><a class="btn pri" href="#/about">ABOUT VCA</a><a class="btn" href="#/join">JOIN VCA</a></div>${orbit()}</div></div>
 ${D.members.length ? `<div class="marquee" aria-hidden="true"><div class="mq-track">${[...D.members,...D.members].map(m=>`<span class="mq-face">${(m.portrait||m.image) ? img(m.portrait||m.image,m.name) : `<span class="ph">${esc(m.name[0])}</span>`}</span>`).join("")}</div></div>` : ""}
 <section class="alt"><div class="in"><h2>活動の循環</h2><p class="lead">出会いで終わらず、実績として次の活動につながる。VCAはこの循環をつくります。</p>
 <div class="cycle">${[["MEMBERS","出会う"],["COLLABORATION","協力する"],["CREATION","作品が生まれる"],["PROJECT","企画になる"],["NEXT","次の活動へ"]].map(([a,b])=>`<div class="step"><b>${a}</b><span>${b}</span></div>`).join("")}</div>
